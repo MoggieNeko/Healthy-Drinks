@@ -84,7 +84,7 @@
       box-shadow: 6px 6px 0 var(--frame);
       padding:14px;
       position:relative;
-      overflow:hidden;
+      overflow:visible;
     }
     .panel::before{
       content:"";
@@ -205,19 +205,20 @@
 
     /* Manga SFX bubble near stamp grid */
     .sfx{
-      position:absolute;
-      margin-top:-20px;
-      right:10px;
-      transform: rotate(-8deg);
-      border:3px solid var(--frame);
-      background:#fff;
-      border-radius: 18px;
-      padding:6px 10px;
-      box-shadow: 5px 5px 0 var(--frame);
-      font-weight:900;
-      pointer-events:none;
-      opacity:0;
-    }
+  position:absolute;
+  left:0;
+  top:0;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  border:3px solid var(--frame);
+  background:#fff;
+  border-radius:18px;
+  padding:6px 10px;
+  box-shadow:5px 5px 0 var(--frame);
+  font-weight:900;
+  pointer-events:none;
+  opacity:0;
+  z-index:999; /* 置頂，壓住印仔 */
+}
     .sfx::after{
       content:"";
       position:absolute;
