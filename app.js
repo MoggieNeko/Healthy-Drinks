@@ -65,13 +65,32 @@
     el("kpiStamps").textContent = String(Math.max(0, Math.min(10, state.stamps)));
   }
 
-  function showSfx(text) {
-    const sfx = el("sfx");
-    sfx.textContent = text || "啪！";
-    sfx.classList.remove("show");
-    void sfx.offsetWidth; // restart animation
+  function showSfx(text, targetIndex) {
+  const sfx = el("sfx");
+  sfx.textContent = text || "啪！";
+  sfx.classList.remove("show");
+
+  requestAnimationFrame(() => {
+    if (targetIndex) {
+      const grid = el("stampGrid");
+      const wrap = document.querySelector(".stampWrap");
+      const cell = grid?.children?.[targetIndex - 1];
+
+      if (cell && wrap) {
+        const c = cell.getBoundingClientRect();
+        const w = wrap.getBoundingClientRect();
+
+        // 泡泡放在該格「中間偏上」位置（你可以微調 0.5 / 0.35）
+        sfx.style.left = (c.left - w.left + c.width * 0.5) + "px";
+        sfx.style.top  = (c.top  - w.top  + c.height * 0.55) + "px";
+      }
+    }
+
+    // restart animation
+    void sfx.offsetWidth;
     sfx.classList.add("show");
-  }
+  });
+}
 
   function beep() {
     try {
@@ -294,7 +313,7 @@
       lastAddedStampIndex = state.stamps;
       save(state);
 
-      showSfx("啪！");
+      showSfx("啪！", state.stamps);
       beep();
 
       renderAll();
