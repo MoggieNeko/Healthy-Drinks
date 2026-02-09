@@ -82,7 +82,7 @@
 
         // 泡泡放在該格「中間偏上」位置（你可以微調 0.5 / 0.35）
         sfx.style.left = (c.left - w.left + c.width * 0.5) + "px";
-        sfx.style.top  = (c.top  - w.top  + c.height * 0.55) + "px";
+        sfx.style.top  = (c.top  - w.top  + c.height * -1.5) + "px";
       }
     }
 
