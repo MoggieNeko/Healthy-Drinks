@@ -1,0 +1,96 @@
+<div class="wrap">
+    <div class="top">
+      <div>
+        <h1 id="appTitle">戒糖印仔卡</h1>
+        <div class="sub" id="appSub">記錄每杯飲品。勾「已戒糖」就會蓋一個印仔。</div>
+      </div>
+      <div class="row">
+        <button class="btn" id="exportBtn">匯出</button>
+        <label class="btn" style="display:inline-flex; align-items:center; gap:8px;">
+          匯入 <input id="importFile" type="file" accept="application/json" style="display:none;">
+        </label>
+        <button class="btn danger" id="resetAllBtn">清空資料</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="row">
+          <div>
+            <label>女朋友稱呼（顯示在標題）</label>
+            <input type="text" id="nameInput" placeholder="例如：阿盈 / BB / Honey" />
+          </div>
+          <div>
+            <label>飲品名稱（可留空）</label>
+            <input type="text" id="drinkInput" placeholder="例如：Latte / 絲襪奶茶 / 青提梳打" />
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:10px;">
+          <div class="toggle">
+            <input type="checkbox" id="sugarFreeInput" />
+            <div>
+              <div style="font-weight:800;">已戒糖（無糖 / 少糖當無糖）</div>
+              <div class="meta">勾選後：若未滿 10 印會 +1 印</div>
+            </div>
+          </div>
+          <div>
+            <label>備註（可選）</label>
+            <input type="text" id="noteInput" placeholder="例如：今日好乖 / 心情OK / 走甜都好飲" />
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:12px;">
+          <button class="btn primary" id="addBtn">新增紀錄</button>
+          <button class="btn" id="quickNowBtn">只記一杯（名稱留空）</button>
+        </div>
+
+        <div id="capBanner" class="banner warn hidden">
+          已滿 10 印：新增「戒糖」紀錄會繼續記錄，但不再加印。
+          <small>建議先兌換 10 印獎勵並重置，開始新一輪。</small>
+        </div>
+
+        <div class="hr"></div>
+
+        <label>獎勵設定</label>
+        <div class="row">
+          <div>
+            <label>滿 5 印獎勵</label>
+            <input type="text" id="reward5Input" placeholder="例如：請你飲一杯最鍾意嘅" />
+          </div>
+          <div>
+            <label>滿 10 印獎勵</label>
+            <input type="text" id="reward10Input" placeholder="例如：一餐大餐 / 小禮物" />
+          </div>
+        </div>
+
+        <div class="footer">
+          小貼士：資料只會儲存在呢部機嘅瀏覽器。如要轉手機，用「匯出 / 匯入」。
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="stampbar">
+          <div style="min-width:240px;">
+            <div style="font-weight:900; font-size:14px;">印仔進度</div>
+            <div class="meta" id="stampMeta">0 / 10</div>
+          </div>
+          <div class="kpi">
+            <div class="pill"><strong id="kpiTotal">0</strong> 杯紀錄</div>
+            <div class="pill"><strong id="kpiSugarFree">0</strong> 杯戒糖</div>
+            <div class="pill"><strong id="kpiStamps">0</strong> 印仔</div>
+          </div>
+        </div>
+
+        <div class="stamps" id="stampGrid"></div>
+
+        <div id="reward5Banner" class="banner good hidden"></div>
+        <div id="reward10Banner" class="banner good hidden"></div>
+
+        <div class="hr"></div>
+
+        <div style="font-weight:900; font-size:14px;">紀錄</div>
+        <div class="list" id="logList"></div>
+      </div>
+    </div>
+  </div>
