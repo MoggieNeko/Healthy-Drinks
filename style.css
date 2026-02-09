@@ -219,18 +219,6 @@
   opacity:0;
   z-index:999; /* 置頂，壓住印仔 */
 }
-    .sfx::after{
-      content:"";
-      position:absolute;
-      right:18px;
-      bottom:-12px;
-      width:16px; height:16px;
-      background:#fff;
-      border-left:3px solid var(--frame);
-      border-bottom:3px solid var(--frame);
-      transform: rotate(45deg);
-      box-shadow: 3px 3px 0 rgba(0,0,0,0);
-    }
     @keyframes sfxFloat {
       0% { opacity:0; transform: translateY(6px) rotate(-8deg) scale(.96); }
       15% { opacity:1; transform: translateY(0) rotate(-8deg) scale(1.02); }
