@@ -141,7 +141,7 @@
 
     /* Fix overlap: meta line stacks cleanly on narrow screens */
     .metaLine{ display:flex; align-items:flex-end; justify-content:space-between; gap:10px; flex-wrap:wrap; }
-    .metaSmall{ color:var(--muted); font-size:12px; font-weight:900; }
+    .metaSmall{ color:var(--muted);  margin-top:12px; font-size:12px; font-weight:900; }
     .kpis{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; justify-content:flex-end; }
     .pill{
       padding:7px 10px;
@@ -206,7 +206,7 @@
     /* Manga SFX bubble near stamp grid */
     .sfx{
       position:absolute;
-      top:-8px;
+      margin-top:-20px;
       right:10px;
       transform: rotate(-8deg);
       border:3px solid var(--frame);
