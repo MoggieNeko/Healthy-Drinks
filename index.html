@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>萬事屋・戒糖印仔帳</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo">万</div>
+      <div class="titlewrap">
+        <h1 id="appTitle">萬事屋・戒糖印仔帳</h1>
+        <div class="subtitle">吐槽一句：戒糖唔易，但每一印都係功德。</div>
+      </div>
+    </div>
+    <div class="btns">
+      <button class="btn" id="exportBtn">匯出</button>
+      <label class="btn filebtn">
+        匯入 <input id="importFile" type="file" accept="application/json">
+      </label>
+      <button class="btn danger" id="resetAllBtn">清空</button>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <div class="tag">🧾 任務：每日飲品紀錄</div>
+
+      <div class="row mt10">
+        <div>
+          <label>女朋友稱呼（顯示在標題）</label>
+          <input type="text" id="nameInput" placeholder="例如：阿盈 / BB / Honey" />
+        </div>
+        <div>
+          <label>飲品名稱（可留空）</label>
+          <input type="text" id="drinkInput" placeholder="例如：Latte / 絲襪奶茶 / 青提梳打" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="toggle">
+          <input type="checkbox" id="sugarFreeInput" />
+          <div>
+            <div class="big">已戒糖（無糖／走甜／少糖當無糖）</div>
+            <div class="small">勾選後：未滿 10 印會 +1 印（蓋章動畫＋「啪！」）</div>
+          </div>
+        </div>
+        <div>
+          <label>備註（可選）</label>
+          <input type="text" id="noteInput" placeholder="例如：今日好乖 / 心情OK / 走甜都好飲" />
+        </div>
+      </div>
+
+      <div class="row mt10">
+        <button class="btn primary" id="addBtn">新增紀錄</button>
+        <button class="btn" id="quickNowBtn">只記一杯</button>
+      </div>
+
+      <div id="capBanner" class="callout blue hidden">
+        <div class="head">已滿 10 印：而家係「滿印上限」模式。</div>
+        <small>新增戒糖會繼續記錄，但唔再加印。兌換 10 印後可「重置一輪」。</small>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="tag">🎁 獎勵設定（萬事屋條款）</div>
+
+      <div class="row">
+        <div>
+          <label>滿 5 印獎勵</label>
+          <input type="text" id="reward5Input" placeholder="例如：請你飲一杯最鍾意嘅" />
+        </div>
+        <div>
+          <label>滿 10 印獎勵</label>
+          <input type="text" id="reward10Input" placeholder="例如：一餐大餐 / 小禮物" />
+        </div>
+      </div>
+
+      <div class="footer">
+        資料只會儲存在呢部機瀏覽器。轉手機：用「匯出 / 匯入」。<br>
+        iPhone：Safari 開 → 分享 →「加入主畫面」。
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="metaLine">
+        <div>
+          <div class="tag">🟥 印仔卡（10 格）</div>
+          <div class="metaSmall" id="stampMeta">0 / 10</div>
+        </div>
+        <div class="kpis">
+          <div class="pill"><strong id="kpiTotal">0</strong><span>杯</span></div>
+          <div class="pill"><strong id="kpiSugarFree">0</strong><span>戒糖</span></div>
+          <div class="pill"><strong id="kpiStamps">0</strong><span>印</span></div>
+        </div>
+      </div>
+
+      <div class="stampWrap">
+        <div class="sfx" id="sfx">啪！</div>
+        <div class="stampGrid" id="stampGrid"></div>
+      </div>
+
+      <div id="reward5Banner" class="callout good hidden"></div>
+      <div id="reward10Banner" class="callout good hidden"></div>
+
+      <div class="hr"></div>
+      <div class="tag">☕️ 飲品紀錄（最近 60 筆）</div>
+      <div class="log" id="logList"></div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay hidden" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="bubble">
+      <div class="modalTitle" id="modalTitle">達成！</div>
+      <div class="modalText" id="modalText"></div>
+      <div class="modalHint" id="modalHint"></div>
+    </div>
+    <div class="modalBtns" id="modalBtns"></div>
+  </div>
+</div>
+
+<script src="./app.js"></script>
+</body>
+</html>

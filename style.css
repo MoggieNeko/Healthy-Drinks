@@ -1,0 +1,325 @@
+:root {
+      --ink:#0b0b0f;
+      --paper:#f7f7f4;
+      --paper2:#efefeb;
+      --frame:#111;
+      --muted:#4b5563;
+      --accent:#e11d48; /* 紅：印章 */
+      --accent2:#2563eb; /* 藍：提示 */
+      --good:#16a34a;
+      --warn:#ca8a04;
+      --shadow: rgba(0,0,0,.12);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 25% 20%, rgba(0,0,0,.10) 0 1px, transparent 1px 8px),
+        radial-gradient(circle at 70% 60%, rgba(0,0,0,.08) 0 1px, transparent 1px 9px),
+        linear-gradient(180deg, var(--paper), var(--paper2));
+      background-size: 8px 8px, 9px 9px, auto;
+    }
+
+    .wrap{ max-width:920px; margin:0 auto; padding:16px; }
+
+    .topbar{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      padding:12px 14px;
+      background: #fff;
+      border: 3px solid var(--frame);
+      border-radius: 18px;
+      box-shadow: 6px 6px 0 var(--frame);
+    }
+    .brand{ display:flex; gap:12px; align-items:center; }
+    .logo{
+      width:44px; height:44px;
+      border:3px solid var(--frame);
+      border-radius:14px;
+      background: repeating-linear-gradient(45deg, #fff 0 6px, #f0f0ec 6px 12px);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow: 3px 3px 0 var(--frame);
+      font-weight:900;
+    }
+    .titlewrap h1{ margin:0; font-size:20px; letter-spacing:.5px; }
+    .subtitle{ margin-top:3px; font-size:12px; color:var(--muted); }
+
+    .tag{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 10px;
+      border:2px solid var(--frame);
+      border-radius:999px;
+      background:#fff;
+      font-size:12px;
+      box-shadow: 3px 3px 0 var(--frame);
+      white-space:nowrap;
+      font-weight:900;
+    }
+
+    .btns{ display:flex; gap:8px; flex-wrap:wrap; }
+    .btn{
+      border:2px solid var(--frame);
+      background:#fff;
+      color:var(--ink);
+      padding:9px 12px;
+      border-radius:14px;
+      cursor:pointer;
+      font-weight:900;
+      box-shadow: 4px 4px 0 var(--frame);
+    }
+    .btn:active{ transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--frame); }
+    .btn.danger{ background: #fff0f0; }
+    .btn.primary{ background: #eef5ff; }
+
+    .grid{ display:grid; grid-template-columns: 1.15fr .85fr; gap:12px; margin-top:14px; }
+    @media (max-width:860px){ .grid{ grid-template-columns:1fr; } }
+
+    .panel{
+      background:#fff;
+      border:3px solid var(--frame);
+      border-radius:18px;
+      box-shadow: 6px 6px 0 var(--frame);
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .panel::before{
+      content:"";
+      position:absolute; inset:-60px -60px auto auto;
+      width:240px; height:240px;
+      background: repeating-linear-gradient(135deg, rgba(0,0,0,.06) 0 6px, transparent 6px 14px);
+      transform: rotate(12deg);
+      border-radius: 30px;
+      pointer-events:none;
+    }
+
+    label{ display:block; font-size:12px; color:var(--muted); margin:10px 0 6px; font-weight:900; }
+    input[type="text"]{
+      width:100%;
+      border:2px solid var(--frame);
+      border-radius:14px;
+      padding:10px 12px;
+      font-weight:800;
+      outline:none;
+      background: #fff;
+    }
+
+    .row{ display:flex; gap:10px; flex-wrap:wrap; }
+    .row > div{ flex:1; min-width:220px; }
+
+    .toggle{
+      display:flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border:2px solid var(--frame);
+      border-radius:14px;
+      background: #fff;
+      box-shadow: 4px 4px 0 var(--frame);
+    }
+    .toggle input{ width:18px; height:18px; }
+    .toggle .big{ font-weight:900; }
+    .toggle .small{ font-size:12px; color:var(--muted); margin-top:2px; font-weight:800; }
+
+    .callout{
+      margin-top:12px;
+      padding:10px 12px;
+      border:2px solid var(--frame);
+      border-radius:14px;
+      background: #fffbe6;
+      box-shadow: 4px 4px 0 var(--frame);
+      font-size:12px;
+      font-weight:800;
+    }
+    .callout.good{ background:#effdf3; }
+    .callout.blue{ background:#eef5ff; }
+    .callout .head{ font-weight:900; }
+    .callout small{ display:block; color:var(--muted); margin-top:4px; font-weight:800; }
+
+    .hr{ height:2px; background: repeating-linear-gradient(90deg, var(--frame) 0 10px, transparent 10px 16px); margin:14px 0; }
+
+    /* Fix overlap: meta line stacks cleanly on narrow screens */
+    .metaLine{ display:flex; align-items:flex-end; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+    .metaSmall{ color:var(--muted); font-size:12px; font-weight:900; }
+    .kpis{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; justify-content:flex-end; }
+    .pill{
+      padding:7px 10px;
+      border:2px solid var(--frame);
+      border-radius:999px;
+      background:#fff;
+      font-size:12px;
+      font-weight:900;
+      box-shadow: 3px 3px 0 var(--frame);
+      white-space:nowrap;
+      flex: 0 0 auto;
+    }
+    .pill span{ color:var(--muted); font-weight:900; margin-left:6px; }
+
+    @media (max-width:560px){
+      .metaLine{ flex-direction:column; align-items:flex-start; }
+      .kpis{ justify-content:flex-start; }
+    }
+
+    .stampWrap{ position:relative; }
+    .stampGrid{ display:grid; grid-template-columns: repeat(10, 1fr); gap:8px; margin-top:10px; }
+    .stampCell{
+      aspect-ratio:1/1;
+      border:2px solid var(--frame);
+      border-radius:14px;
+      background: #fff;
+      position:relative;
+      overflow:hidden;
+      box-shadow: 3px 3px 0 var(--frame);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:900;
+    }
+    .stampCell.empty{ background: linear-gradient(180deg, #fff, #f7f7f4); color:rgba(17,17,17,.45); }
+    /* 印仔更大更清晰 */
+    .stampImg{
+      width:120%;
+      height:120%;
+      object-fit:contain;
+      transform: rotate(var(--rot, -6deg)) scale(1.08);
+      filter: contrast(1.18) saturate(1.05) drop-shadow(0 2px 2px rgba(0,0,0,.18));
+      opacity: .99;
+      pointer-events:none;
+    }
+
+    /* Stamp animation */
+    @keyframes popStamp {
+      0% { transform: rotate(var(--rot, -6deg)) scale(.55); opacity:0; }
+      45% { transform: rotate(var(--rot, -6deg)) scale(1.18); opacity:1; }
+      100% { transform: rotate(var(--rot, -6deg)) scale(1.08); opacity:.99; }
+    }
+    @keyframes cellShake {
+      0% { transform: translate(0,0); }
+      20% { transform: translate(-1px,1px); }
+      40% { transform: translate(1px,-1px); }
+      60% { transform: translate(-1px,0); }
+      80% { transform: translate(1px,1px); }
+      100% { transform: translate(0,0); }
+    }
+    .stampCell.pop { animation: cellShake 420ms ease; }
+    .stampCell.pop .stampImg { animation: popStamp 520ms cubic-bezier(.2,.9,.2,1); }
+
+    /* Manga SFX bubble near stamp grid */
+    .sfx{
+      position:absolute;
+      top:-8px;
+      right:10px;
+      transform: rotate(-8deg);
+      border:3px solid var(--frame);
+      background:#fff;
+      border-radius: 18px;
+      padding:6px 10px;
+      box-shadow: 5px 5px 0 var(--frame);
+      font-weight:900;
+      pointer-events:none;
+      opacity:0;
+    }
+    .sfx::after{
+      content:"";
+      position:absolute;
+      right:18px;
+      bottom:-12px;
+      width:16px; height:16px;
+      background:#fff;
+      border-left:3px solid var(--frame);
+      border-bottom:3px solid var(--frame);
+      transform: rotate(45deg);
+      box-shadow: 3px 3px 0 rgba(0,0,0,0);
+    }
+    @keyframes sfxFloat {
+      0% { opacity:0; transform: translateY(6px) rotate(-8deg) scale(.96); }
+      15% { opacity:1; transform: translateY(0) rotate(-8deg) scale(1.02); }
+      80% { opacity:1; transform: translateY(-2px) rotate(-8deg) scale(1.02); }
+      100% { opacity:0; transform: translateY(-8px) rotate(-8deg) scale(.98); }
+    }
+    .sfx.show{ animation: sfxFloat 900ms ease; }
+
+    .log{ margin-top:10px; display:flex; flex-direction:column; gap:10px; }
+    .logItem{
+      display:flex; justify-content:space-between; gap:12px; align-items:flex-start;
+      border:2px solid var(--frame);
+      border-radius:16px;
+      padding:10px 12px;
+      background:#fff;
+      box-shadow: 4px 4px 0 var(--frame);
+    }
+    .left{ display:flex; gap:10px; align-items:flex-start; }
+    .badge{
+      width:36px; height:36px;
+      border:2px solid var(--frame);
+      border-radius:14px;
+      background:#fff;
+      box-shadow: 3px 3px 0 var(--frame);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+      flex:0 0 auto;
+      font-weight:900;
+    }
+    .badge img{ width:40px; height:40px; object-fit:contain; transform: rotate(-10deg) scale(1.0); }
+    .logTitle{ font-weight:900; }
+    .logMeta{ font-size:12px; color:var(--muted); margin-top:2px; font-weight:900; }
+
+    .footer{
+      margin-top:10px;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:800;
+      line-height:1.55;
+    }
+
+    /* Modal (speech bubble + manga panel) */
+    .overlay{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.35);
+      display:flex; align-items:center; justify-content:center;
+      padding:18px;
+      z-index: 50;
+    }
+    .modal{
+      width:min(520px, 100%);
+      background:#fff;
+      border:3px solid var(--frame);
+      border-radius:20px;
+      box-shadow: 8px 8px 0 var(--frame);
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .modal::before{
+      content:"";
+      position:absolute; inset:-40px auto auto -40px;
+      width:200px; height:200px;
+      background: repeating-linear-gradient(45deg, rgba(0,0,0,.06) 0 7px, transparent 7px 14px);
+      transform: rotate(-10deg);
+      border-radius: 30px;
+      pointer-events:none;
+    }
+    .bubble{
+      border:3px solid var(--frame);
+      border-radius: 18px;
+      background:#fff;
+      padding:10px 12px;
+      box-shadow: 6px 6px 0 var(--frame);
+      position:relative;
+      margin-bottom:12px;
+    }
+    .bubble::after{
+      content:"";
+      position:absolute;
+      left:26px;
+      bottom:-14px;
+      width:18px; height:18px;
+      background:#fff;
+      border-left:3px solid var(--frame);
+      border-bottom:3px solid var(--frame);
+      transform: rotate(45deg);
+    }
+    .modalTitle{ font-weight:900; font-size:18px; }
+    .modalText{ margin-top:6px; font-weight:900; }
+    .modalHint{ margin-top:6px; color:var(--muted); font-size:12px; font-weight:900; }
+    .modalBtns{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+    .hidden{ display:none; }
