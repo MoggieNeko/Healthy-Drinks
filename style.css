@@ -312,11 +312,3 @@
     .modalHint{ margin-top:6px; color:var(--muted); font-size:12px; font-weight:900; }
     .modalBtns{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
     .hidden{ display:none; }
-
-body{
-  background-image:
-    url("./assets/paper_texture_1024.png"),
-    url("./assets/bg_halftone_tile_256.png");
-  background-size: 1024px 1024px, 256px 256px;
-  background-repeat: repeat, repeat;
-}
